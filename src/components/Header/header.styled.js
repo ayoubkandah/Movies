@@ -26,8 +26,8 @@ export const Hamburger = styled(hamburger)`
 `;
 
 export const Logo = styled(logo)`
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 3.43rem;
+  height: 3.49rem;
   margin: 0 auto;
   padding: 0;
 `;
