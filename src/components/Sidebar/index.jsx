@@ -1,40 +1,91 @@
-import React from 'react';
-import { Wrapper, MainList, List, Links, Login } from './sidebar.style';
+import React, { useState } from 'react';
+import { useInterfaceContext } from 'context/Interface';
+import {
+  Wrapper,
+  UlLinks,
+  MainList,
+  List,
+  Links,
+  Login,
+  UL,
+} from './sidebar.style';
 
 export default function Sidebar() {
-  // const [mainList, setMainList] = useState({
-  //   movies: null,
-  //   tv: null,
-  //   people: null,
-  // });
+  const menu = useInterfaceContext();
+
+  const [mainList, setMainList] = useState({
+    movies: null,
+    tv: null,
+    people: null,
+  });
+
+  const listHandle = (title) => {
+    setMainList({ ...mainList, [title]: !mainList[title] });
+  };
 
   return (
-    <Wrapper>
-      <MainList>Movies</MainList>
-      <List>Popular</List>
-      <List>Top Rated</List>
-      <List>Upcoming</List>
-      <List>Now Playing</List>
+    <>
+      {menu.mobileMenu && (
+        <Wrapper>
+          <MainList
+            onClick={() => {
+              listHandle('movies');
+            }}
+          >
+            Movies
+          </MainList>
+          {mainList.movies && (
+            <UL>
+              <List>Popular</List>
+              <List>Top Rated</List>
+              <List>Upcoming</List>
+              <List>Now Playing</List>
+            </UL>
+          )}
 
-      <MainList>TV Shows</MainList>
-      <List>Popular</List>
-      <List>Airing Today</List>
-      <List>On TV</List>
-      <List>Top Rated</List>
+          <MainList
+            onClick={() => {
+              listHandle('tv');
+            }}
+          >
+            TV Shows
+          </MainList>
+          {mainList.tv && (
+            <UL>
+              <List>Popular</List>
+              <List>Top Rated</List>
+              <List>On TV</List>
+              <List>Airing Today</List>
+            </UL>
+          )}
 
-      <MainList>People</MainList>
-      <List>Popular People</List>
+          <MainList
+            onClick={() => {
+              listHandle('people');
+            }}
+          >
+            People
+          </MainList>
+          {mainList.people && (
+            <UL>
+              <List>Popular People</List>
+            </UL>
+          )}
 
-      <Links>Contribution Bible</Links>
-      <Links>Apps</Links>
-      <Links>Discussions</Links>
-      <Links>Leaderboard</Links>
-      <Links>Contribute</Links>
-      <Links>API</Links>
-      <Links>Support</Links>
-      <Links>About</Links>
+          <UlLinks>
+            <Links>Contribution Bible</Links>
+            <Links>Apps</Links>
+            <Links>Discussions</Links>
+            <Links>Leaderboard</Links>
+            <Links>Contribute</Links>
+            <Links>API</Links>
+            <Links>Support</Links>
+            <Links>About</Links>
+          </UlLinks>
 
-      <Login>Login</Login>
-    </Wrapper>
+          <Login>Login</Login>
+        </Wrapper>
+      )}
+    </>
   );
 }
