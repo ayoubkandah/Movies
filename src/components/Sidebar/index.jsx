@@ -10,6 +10,11 @@ import {
   UL,
 } from './sidebar.style';
 
+/**
+ * Mobile sidebar.
+ *
+ * @return {JSX.Element}
+ */
 export default function Sidebar() {
   const menu = useInterfaceContext();
 
@@ -24,68 +29,64 @@ export default function Sidebar() {
   };
 
   return (
-    <>
-      {menu.mobileMenu && (
-        <Wrapper>
-          <MainList
-            onClick={() => {
-              listHandle('movies');
-            }}
-          >
-            Movies
-          </MainList>
-          {mainList.movies && (
-            <UL>
-              <List>Popular</List>
-              <List>Top Rated</List>
-              <List>Upcoming</List>
-              <List>Now Playing</List>
-            </UL>
-          )}
-
-          <MainList
-            onClick={() => {
-              listHandle('tv');
-            }}
-          >
-            TV Shows
-          </MainList>
-          {mainList.tv && (
-            <UL>
-              <List>Popular</List>
-              <List>Top Rated</List>
-              <List>On TV</List>
-              <List>Airing Today</List>
-            </UL>
-          )}
-
-          <MainList
-            onClick={() => {
-              listHandle('people');
-            }}
-          >
-            People
-          </MainList>
-          {mainList.people && (
-            <UL>
-              <List>Popular People</List>
-            </UL>
-          )}
-
-          <UlLinks>
-            <Links>Contribution Bible</Links>
-            <Links>Apps</Links>
-            <Links>Discussions</Links>
-            <Links>Leaderboard</Links>
-            <Links>Contribute</Links>
-            <Links>API</Links>
-            <Links>Support</Links>
-            <Links>About</Links>
-          </UlLinks>
-
-          <Login>Login</Login>
-        </Wrapper>
+    <Wrapper active={menu.mobileMenu ? 'show' : 'hide'}>
+      <MainList
+        onClick={() => {
+          listHandle('movies');
+        }}
+      >
+        Movies
+      </MainList>
+      {mainList.movies && (
+        <UL>
+          <List>Popular</List>
+          <List>Top Rated</List>
+          <List>Upcoming</List>
+          <List>Now Playing</List>
+        </UL>
       )}
-    </>
+
+      <MainList
+        onClick={() => {
+          listHandle('tv');
+        }}
+      >
+        TV Shows
+      </MainList>
+      {mainList.tv && (
+        <UL>
+          <List>Popular</List>
+          <List>Top Rated</List>
+          <List>On TV</List>
+          <List>Airing Today</List>
+        </UL>
+      )}
+
+      <MainList
+        onClick={() => {
+          listHandle('people');
+        }}
+      >
+        People
+      </MainList>
+      {mainList.people && (
+        <UL>
+          <List>Popular People</List>
+        </UL>
+      )}
+
+      <UlLinks>
+        <Links>Contribution Bible</Links>
+        <Links>Apps</Links>
+        <Links>Discussions</Links>
+        <Links>Leaderboard</Links>
+        <Links>Contribute</Links>
+        <Links>API</Links>
+        <Links>Support</Links>
+        <Links>About</Links>
+      </UlLinks>
+
+      <Login>Login</Login>
+    </Wrapper>
   );
 }
