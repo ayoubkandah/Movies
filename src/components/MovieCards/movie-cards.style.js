@@ -50,7 +50,7 @@ export const Overview = styled.h3`
   font-weight: 400;
   font-size: 0.9rem;
   margin: 1rem 0 0 0.8rem;
-  padding: 0.2rem 0.5rem 0;
+  padding: 0.2rem 0.5rem 0 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
