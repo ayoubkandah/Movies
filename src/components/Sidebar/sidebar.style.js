@@ -6,13 +6,13 @@ export const Wrapper = styled.div`
   background: rgba(3, 37, 65, 0.9);
   display: flex;
   flex-direction: column;
-  min-height: 86.5vh;
+  min-height: 87.3vh;
   padding: 1.28rem 0 0 1.23rem;
   position: absolute;
   transition: all 0.5s ease;
   width: 85vw;
   z-index: 6;
-  left: ${(props) => (props.active === 'show' ? '0' : '-350px')};
+  left: ${(props) => (props.active === 'show' ? '0' : '-50rem')};
 `;
 
 export const MainList = styled.h3`

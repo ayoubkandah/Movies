@@ -2,6 +2,11 @@ import React from 'react';
 import { useInterfaceContext } from 'context/Interface';
 import { Wrapper, Search, Hamburger, Logo, User } from './header.styled';
 
+/**
+ * Header.
+ *
+ * @return {JSX.Element}
+ */
 export default function Header() {
   const menu = useInterfaceContext();
 
