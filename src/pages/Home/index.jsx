@@ -11,6 +11,12 @@ export default function Home() {
       <Sidebar />
       <PopularMovies />
       <MovieCards />
+      <MovieCards />
+      <MovieCards />
+      <MovieCards />
+      <MovieCards />
+      <MovieCards />
+      <MovieCards />
     </>
   );
 }

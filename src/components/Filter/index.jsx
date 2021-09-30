@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Wrapper, Input, Name, Arrow } from './inputs.style';
+import { Wrapper, Input, Name, Arrow } from './filter.style';
 
 /**
+ * Filter label.
+ * Shared component.
  *
- * @returns
+ * @return {JSX.Element}
  */
 export default function Filter() {
   const [active, setActive] = useState(false);
@@ -13,7 +15,11 @@ export default function Filter() {
 
   return (
     <Wrapper onClick={handleActive}>
-      <Input placeholder="Sort" type="select">
+      <Input
+        bottomBorder={active ? 'show' : 'hide'}
+        placeholder="Sort"
+        type="select"
+      >
         <Name>Sort</Name>
         <Arrow active={active ? 'active' : 'notActive'} />
       </Input>

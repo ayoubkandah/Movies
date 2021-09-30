@@ -5,36 +5,36 @@ import { ReactComponent as logo } from 'assets/logo.svg';
 import { ReactComponent as user } from 'assets/user.svg';
 
 export const Wrapper = styled.div`
+  align-items: center;
   background-color: #032541;
   display: flex;
   flex-direction: row;
   height: 4rem;
-  align-items: center;
 `;
 
 export const Search = styled(search)`
   height: 1.5rem;
-  width: 1.5rem;
   padding: 0 1.25rem 0 0;
+  width: 1.5rem;
 `;
 
 export const Hamburger = styled(hamburger)`
-  height: 1.4rem;
-  width: 1.4rem;
   fill: #fff;
+  height: 1.4rem;
   padding: 0 2.41rem 0 1.25rem;
+  width: 1.4rem;
 `;
 
 export const Logo = styled(logo)`
-  width: 3.43rem;
   height: 3.49rem;
   margin: 0 auto;
   padding: 0;
+  width: 3.43rem;
 `;
 
 export const User = styled(user)`
-  height: 1.4rem;
-  width: 1.4rem;
   fill: #fff;
+  height: 1.4rem;
   padding: 0 0.9rem 0 0;
+  width: 1.4rem;
 `;

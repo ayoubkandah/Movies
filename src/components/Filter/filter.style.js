@@ -11,22 +11,24 @@ export const Input = styled.div`
     background-color: #b1e2ff;
   }
 
-  margin: 0.6rem 1.28rem 0 1.28rem;
+  display: inline-block;
   height: 3rem;
   width: 88.23vw;
   border: 0.1rem solid #e7e6e6;
-  border-radius: 0.3rem;
+  border-left: none;
+  border-right: none;
+  border-radius: 0.3rem 0.3rem 0rem 0;
+
   color: black;
   background-color: transparent;
-  box-shadow: 0 0.1rem 0.5rem #d9d9d9cc;
 `;
 
 export const Name = styled.h3`
-  font-size: 1.1rem;
-  margin: 0.8rem 0 0 0.95rem;
-  font-weight: 600;
-  padding: 0;
   display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0 0.95rem;
+  padding: 0;
 `;
 
 export const Arrow = styled(arrow)`

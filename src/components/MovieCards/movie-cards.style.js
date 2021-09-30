@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-top: 5rem;
   padding: 0 1.3rem 0 1.3rem;
 `;
