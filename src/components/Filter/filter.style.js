@@ -13,7 +13,7 @@ export const Input = styled.div`
 
   display: inline-block;
   height: 3rem;
-  width: 88.23vw;
+  width: 88vw;
   border: 0.1rem solid #e7e6e6;
   border-left: none;
   border-right: none;

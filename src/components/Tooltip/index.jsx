@@ -19,14 +19,14 @@ export default function Tooltip({ Icon, text }) {
 
   const handleTooltip = () => {
     if (tools.current.getBoundingClientRect().y < 30) {
-      const x = parseInt(tools.current.clientHeight / 16, 10) * 3 - 47;
+      const x = parseInt(tools.current.clientHeight / 16, 10) * 3 - 49;
       const y = -parseInt(tools.current.clientHeight / 16, 10) * 10 - 30;
 
       setXY({ x, y });
       setIsPositionUp('down');
       setDisplayTooltip(!displayTooltip);
     } else {
-      const x = parseInt(tools.current.clientHeight / 16, 10) * 3 - 47;
+      const x = parseInt(tools.current.clientHeight / 16, 10) * 3 - 49;
       const y = -parseInt(tools.current.clientHeight / 16, 10) * 55 - 261;
 
       setXY({ x, y });

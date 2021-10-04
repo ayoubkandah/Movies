@@ -1,7 +1,6 @@
-import Filter from 'components/Filter';
-import Label from 'components/Label';
+import SortForm from 'components/SortFom';
 import React from 'react';
-import { Title, Wrapper, FilterWrapper, Sort } from './popular-movies.style';
+import { Title, Wrapper } from './popular-movies.style';
 
 /**
  * Popular movies.
@@ -12,10 +11,7 @@ export default function PopularMovies() {
   return (
     <Wrapper>
       <Title>Popular Movies</Title>
-      <FilterWrapper>
-        <Filter />
-        <Label data={{ labelName: 'Sort Results By' }} Input={Sort} />
-      </FilterWrapper>
+      <SortForm />
     </Wrapper>
   );
 }

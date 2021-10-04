@@ -12,8 +12,8 @@ export const TooltipText = styled.p`
   text-overflow: inherit;
   transform: translate(${({ x }) => `${x}%`}, ${({ y }) => `${y}%`});
   white-space: nowrap;
-  width: 13rem;
   width: fit-content;
+  z-index: 4;
 
   &&::after {
     border-color: black;
@@ -25,6 +25,7 @@ export const TooltipText = styled.p`
     position: absolute;
     top: ${({ pos }) => (pos === 'up' ? '80%' : '-15%')};
     transform: rotate(45deg);
+    z-index: 4;
   }
 `;
 
