@@ -73,8 +73,8 @@ export const Rate = styled.div`
       ${({ color }) => (color === 'green' ? '#7ac961' : '#bfc92a')};
     clip: rect(${({ left }) => `${2 - left}rem`}, 0.9375rem, 3.125rem, 0rem);
     animation-name: ${after};
-    animation-duration: 1s;
-    animation-delay: 0.7s;
+    animation-duration: 0.5s;
+    animation-delay: 0.83s;
     animation-fill-mode: forwards;
     overflow: hidden;
   }
@@ -100,7 +100,7 @@ export const Border = styled.div`
   position: absolute;
   width: 2.0787rem;
   height: 2.0787rem;
-  left: -0.279rem;
+  left: -0.277rem;
   top: -0.26rem;
   background-color: transparent;
   border-radius: 3rem;
