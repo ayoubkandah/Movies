@@ -36,11 +36,10 @@ export const Rate = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 8;
-  z-index: 7;
-  border: 0.1rem solid
+  border: 0.15rem solid
     ${({ color }) => (color === 'green' ? '#5c7a5c' : '#7a7a5c')};
 
+  z-index: 7;
   &&::before {
     content: '';
     position: absolute;
@@ -48,7 +47,7 @@ export const Rate = styled.div`
     height: 1.8rem;
     border-radius: 5rem;
     background-color: transparent;
-    border: 0.1rem solid
+    border: 0.15rem solid
       ${({ color }) => (color === 'green' ? '#7ac961' : '#bfc92a')};
 
     clip: rect(0rem, 2.8125rem, ${({ right }) => `${right}rem`}, 0.9375rem);
@@ -70,7 +69,7 @@ export const Rate = styled.div`
     height: 1.8rem;
     border-radius: 5rem;
     background-color: transparent;
-    border: 0.1rem solid
+    border: 0.15rem solid
       ${({ color }) => (color === 'green' ? '#7ac961' : '#bfc92a')};
     clip: rect(${({ left }) => `${2 - left}rem`}, 0.9375rem, 3.125rem, 0rem);
     animation-name: ${after};
@@ -82,14 +81,14 @@ export const Rate = styled.div`
 `;
 
 export const RatePercentage = styled.h5`
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   padding: 0;
   margin: 0;
   font-weight: 900;
   &&::after {
-    content: '%';
+    content: '٪';
     color: #fff;
-    font-size: 0.3rem;
+    font-size: 0.4rem;
     position: absolute;
     bottom: 0.9rem;
     margin: 0 0 0 0.05rem;
@@ -99,12 +98,12 @@ export const RatePercentage = styled.h5`
 
 export const Border = styled.div`
   position: absolute;
-  width: 1.95rem;
-  height: 1.95rem;
-  left: -0.17rem;
-  top: -0.184rem;
-  z-index: -1;
+  width: 2.0787rem;
+  height: 2.0787rem;
+  left: -0.279rem;
+  top: -0.26rem;
   background-color: transparent;
   border-radius: 3rem;
-  border: 0.1rem solid black;
+  border: 0.126rem solid black;
+  z-index: -1;
 `;
