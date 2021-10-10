@@ -11,7 +11,12 @@ import { TooltipText, TooltipContainer } from './tooltip.style';
  *
  * @return {JSX.Element}
  */
-export default function Tooltip({ Icon, text }) {
+export default function Tooltip({
+  Icon,
+  text,
+  background = 'black',
+  color = 'white',
+}) {
   const tools = useRef();
   const [xy, setXY] = useState({ x: null, y: null });
   const [isPositionUp, setIsPositionUp] = useState('up');
@@ -41,7 +46,13 @@ export default function Tooltip({ Icon, text }) {
       <Icon ref={tools} onClick={handleTooltip} />
 
       {displayTooltip && (
-        <TooltipText pos={isPositionUp} x={xy.x} y={xy.y}>
+        <TooltipText
+          pos={isPositionUp}
+          x={xy.x}
+          y={xy.y}
+          background={background}
+          color={color}
+        >
           {text}
         </TooltipText>
       )}
@@ -52,4 +63,6 @@ export default function Tooltip({ Icon, text }) {
 Tooltip.propTypes = {
   Icon: PropTypes.elementType.isRequired,
   text: PropTypes.string.isRequired,
+  background: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 };

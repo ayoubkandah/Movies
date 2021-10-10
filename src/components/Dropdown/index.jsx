@@ -33,7 +33,9 @@ const Dropdown = ({ label, defaultValue, handleChange }) => {
       {open && (
         <Options>
           {label.map((option) => (
-            <Option onClick={() => handleSelect(option)}>{option.name}</Option>
+            <Option key={option.name} onClick={() => handleSelect(option)}>
+              {option.name}
+            </Option>
           ))}
         </Options>
       )}

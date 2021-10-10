@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as arrow } from 'assets/arrow.svg';
+import mq from 'config/mq';
 
 export const Wrapper = styled.div`
   margin: 0 0 0 0;
@@ -19,6 +20,10 @@ export const Input = styled.div`
   border-right: none;
   border-radius: 0.3rem 0.3rem 0rem 0;
 
+  ${mq.dp`
+  width:16.125rem ;
+
+  `}
   color: black;
   background-color: transparent;
 `;

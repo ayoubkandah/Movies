@@ -19,6 +19,8 @@ export const FilterWrapper = styled.div`
   margin: 0.6rem 1.2rem 0 1.1rem;
   padding: 0;
 `;
+export const FilterButton = styled.div``;
+
 export const LabelName = styled.h3`
   font-size: 1rem;
   font-weight: 300;
@@ -42,4 +44,11 @@ export const Icon = styled(tooltip)`
 export const RadioLabel = styled.label`
   margin: 0 0 0.3rem 1.7rem;
   display: block;
+`;
+
+export const CheckboxLabel = styled.h3`
+  display: inline-block;
+  margin: 0.4rem 0 0 0.2rem;
+  font-size: 1.03rem;
+  font-weight: 400;
 `;

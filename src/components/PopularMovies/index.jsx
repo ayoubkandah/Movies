@@ -1,6 +1,14 @@
 import SortForm from 'components/SortFom';
-import React from 'react';
-import { Title, Wrapper } from './popular-movies.style';
+import React, { useEffect, useState } from 'react';
+import MovieCard from 'components/MovieCard';
+import popularMovies from 'services/movies';
+
+import {
+  FormCardsWrapper,
+  MoviesWrapper,
+  Title,
+  Wrapper,
+} from './popular-movies.style';
 
 /**
  * Popular movies.
@@ -8,10 +16,32 @@ import { Title, Wrapper } from './popular-movies.style';
  * @return {JSX.Element}
  */
 export default function PopularMovies() {
+  const [movies, setMovies] = useState();
+
+  const getMovies = async () => {
+    const data = await popularMovies(1);
+    setMovies(data);
+  };
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
     <Wrapper>
-      <Title>Popular Movies</Title>
-      <SortForm />
+      <FormCardsWrapper>
+        <Title>Popular Movies</Title>
+        <SortForm />
+      </FormCardsWrapper>
+
+      <MoviesWrapper>
+        {movies && (
+          <>
+            {movies.results.map((movie) => (
+              <MovieCard movie={movie} />
+            ))}
+          </>
+        )}
+      </MoviesWrapper>
     </Wrapper>
   );
 }

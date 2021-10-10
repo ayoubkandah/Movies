@@ -4,8 +4,11 @@ export const Wrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin-top: 5rem;
+  margin-top: 1.2rem;
   padding: 0 1.3rem 0 1.3rem;
+  @media (min-width: 45rem) {
+    flex-direction: column;
+  }
 `;
 
 export const Container = styled.div`
@@ -18,8 +21,18 @@ export const Container = styled.div`
   border-left: none;
   background-color: #fff;
   height: 8.7rem;
+  position: relative;
   border-radius: 0 0.4rem 0.4rem 0;
+
+  @media (min-width: 45rem) {
+    height: 5.0625rem;
+    width: 11.25rem;
+    border: 0.063rem solid rgba(227, 227, 227, 1);
+    border-top: none;
+    border-radius: 0 0rem 0.45rem 0.45rem;
+  }
 `;
+
 export const IMG = styled.img`
   height: 8.7rem;
   margin: 0;
@@ -28,6 +41,21 @@ export const IMG = styled.img`
   border-right: none;
   border-radius: 0.4rem 0 0 0.4rem;
   padding: 0;
+  position: relative;
+
+  @media (min-width: 45rem) {
+    height: 17.0625rem;
+    width: 11.25rem;
+    padding: 0 0 0;
+    margin: 0;
+    border: 0.063rem solid rgba(227, 227, 227, 1);
+
+    box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
+    border-color: rgba(227, 227, 227, 1);
+    border-bottom: none;
+
+    border-radius: 0.45rem 0.45rem 0 0rem;
+  }
 `;
 
 export const Title = styled.h2`
@@ -35,6 +63,9 @@ export const Title = styled.h2`
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
+  @media (min-width: row45rem) {
+    margin: 0.5rem 0 0 0;
+  }
 `;
 
 export const Date = styled.h4`
@@ -56,4 +87,7 @@ export const Overview = styled.h3`
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
+  @media (min-width: 45rem) {
+    display: none;
+  }
 `;

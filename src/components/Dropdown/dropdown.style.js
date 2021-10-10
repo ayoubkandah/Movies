@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as arrow } from 'assets/dropdown.svg';
+import mq from 'config/mq';
 
 export const Options = styled.ul`
   background: #fff;
@@ -13,6 +14,9 @@ export const Options = styled.ul`
   top: 1.2rem;
   width: 78.3vw;
   z-index: 5;
+  ${mq.dp`
+    width: 14.35rem;
+  `}
 `;
 
 export const Wrapper = styled.div`
@@ -36,6 +40,10 @@ export const Select = styled.div`
   height: 2.2rem;
   justify-content: space-between;
   width: 78.5vw;
+
+  ${mq.dp`
+    width: 14.35rem;
+  `}
 `;
 
 export const Selected = styled.h4`

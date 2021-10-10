@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useInterfaceContext } from 'context/Interface';
 import {
   Wrapper,
@@ -22,7 +22,15 @@ export default function Sidebar() {
     movies: null,
     tv: null,
     people: null,
+    more: null,
+    mobile: true,
   });
+
+  useEffect(() => {
+    if (window.innerWidth > 700) {
+      setMainList({ ...mainList, mobile: false });
+    }
+  }, []);
 
   const listHandle = (title) => {
     setMainList({ ...mainList, [title]: !mainList[title] });
@@ -30,63 +38,123 @@ export default function Sidebar() {
 
   return (
     <Wrapper active={menu.mobileMenu ? 'show' : 'hide'}>
-      <MainList
-        onClick={() => {
-          listHandle('movies');
-        }}
-      >
-        Movies
-      </MainList>
+      {!mainList.movies && (
+        <MainList
+          onClick={() => {
+            listHandle('movies');
+          }}
+        >
+          Movies
+        </MainList>
+      )}
       {mainList.movies && (
-        <UL>
-          <List>Popular</List>
-          <List>Top Rated</List>
-          <List>Upcoming</List>
-          <List>Now Playing</List>
-        </UL>
+        <MainList
+          onClick={() => {
+            listHandle('movies');
+          }}
+        >
+          Movies
+          <UL>
+            <List>Popular</List>
+            <List>Top Rated</List>
+            <List>Upcoming</List>
+            <List>Now Playing</List>
+          </UL>
+        </MainList>
       )}
 
-      <MainList
-        onClick={() => {
-          listHandle('tv');
-        }}
-      >
-        TV Shows
-      </MainList>
+      {!mainList.tv && (
+        <MainList
+          onClick={() => {
+            listHandle('tv');
+          }}
+        >
+          TV Shows
+        </MainList>
+      )}
       {mainList.tv && (
-        <UL>
-          <List>Popular</List>
-          <List>Top Rated</List>
-          <List>On TV</List>
-          <List>Airing Today</List>
-        </UL>
+        <MainList
+          onClick={() => {
+            listHandle('tv');
+          }}
+        >
+          TV Shows
+          <UL>
+            <List>Popular</List>
+            <List>Top Rated</List>
+            <List>On TV</List>
+            <List>Airing Today</List>
+          </UL>
+        </MainList>
       )}
 
-      <MainList
-        onClick={() => {
-          listHandle('people');
-        }}
-      >
-        People
-      </MainList>
+      {!mainList.people && (
+        <MainList
+          onClick={() => {
+            listHandle('people');
+          }}
+        >
+          People
+        </MainList>
+      )}
       {mainList.people && (
-        <UL>
-          <List>Popular People</List>
-        </UL>
+        <MainList
+          onClick={() => {
+            listHandle('people');
+          }}
+        >
+          People
+          <UL>
+            <List>Popular People</List>
+          </UL>
+        </MainList>
       )}
 
-      <UlLinks>
-        <Links>Contribution Bible</Links>
-        <Links>Apps</Links>
-        <Links>Discussions</Links>
-        <Links>Leaderboard</Links>
-        <Links>Contribute</Links>
-        <Links>API</Links>
-        <Links>Support</Links>
-        <Links>About</Links>
-      </UlLinks>
+      {!mainList.more && (
+        <MainList
+          onClick={() => {
+            listHandle('more');
+          }}
+        >
+          More
+        </MainList>
+      )}
+      {mainList.more && (
+        <MainList
+          onClick={() => {
+            listHandle('more');
+          }}
+        >
+          More
+          <UlLinks>
+            <Links>Contribution Bible</Links>
+            <Links>Apps</Links>
+            <Links>Discussions</Links>
+            <Links>Leaderboard</Links>
+            <Links>Contribute</Links>
+            <Links>API</Links>
+            <Links>Support</Links>
+            <Links>About</Links>
+          </UlLinks>
+        </MainList>
+      )}
 
-      <Login>Login</Login>
+      {mainList.mobile && (
+        <>
+          <UlLinks>
+            <Links>Contribution Bible</Links>
+            <Links>Apps</Links>
+            <Links>Discussions</Links>
+            <Links>Leaderboard</Links>
+            <Links>Contribute</Links>
+            <Links>API</Links>
+            <Links>Support</Links>
+            <Links>About</Links>
+          </UlLinks>
+
+          <Login>Login</Login>
+        </>
+      )}
     </Wrapper>
   );
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import mq from 'config/mq';
 
 export const Wrapper = styled.div`
   -webkit-backdrop-filter: blur(1.25rem);
@@ -11,8 +12,21 @@ export const Wrapper = styled.div`
   position: absolute;
   transition: all 0.5s ease;
   width: 85vw;
-  z-index: 6;
+  bottom: -44.7rem;
+  z-index: 9;
+
   left: ${(props) => (props.active === 'show' ? '0' : '-50rem')};
+
+  ${mq.dp`
+  position: static;
+  flex-direction:row;    
+  background-color:transparent;
+  backdrop-filter: blur(1rem);
+  width:auto;
+  height:auto;
+  min-height: auto;
+  align-items: center;
+  `}
 `;
 
 export const MainList = styled.h3`
@@ -21,6 +35,13 @@ export const MainList = styled.h3`
   font-weight: 600;
   margin: 0 0 0.6rem 0;
   padding: 0;
+  white-space: nowrap;
+  ${mq.dp`
+font-size:1rem;
+margin:0 1.2rem 1.2rem 0;
+position:relative;
+cursor:pointer;
+  `}
 `;
 
 export const List = styled.li`
@@ -30,11 +51,26 @@ export const List = styled.li`
   list-style: none;
   margin: 0 0 0.62rem 0;
   padding: 0;
+
+  ${mq.dp`
+  white-space: nowrap;
+  color:black;
+  `}
 `;
 
 export const UL = styled.ul`
   margin: 0rem 0 1.3rem 0;
   padding: 0;
+  ${mq.dp`
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  top:1.7rem;
+  padding:0 2rem 0 1rem;
+  border:0.1rem solid #dee2e6;
+  border-radius:0.25rem; 
+  background-color:#fff;
+  `}
 `;
 
 export const Links = styled.li`
@@ -44,10 +80,26 @@ export const Links = styled.li`
   list-style: none;
   margin: 0rem 0 0.62rem 0;
   padding: 0;
+  ${mq.dp`
+  font-weight: 400;
+  white-space: nowrap;
+  color:black;
+  `}
 `;
+
 export const UlLinks = styled.ul`
   margin: 0.7rem 0 0 0;
   padding: 0;
+  ${mq.dp`
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  top:1.7rem;
+  padding:0 2rem 0 1rem;
+  border:0.1rem solid #dee2e6;
+  border-radius:0.25rem; 
+  background-color:#fff;
+  `}
 `;
 
 export const Login = styled.button`
@@ -59,4 +111,7 @@ export const Login = styled.button`
   margin: 0.66rem 0 0 0;
   padding: 0;
   width: max-content;
+  ${mq.dp`
+  display:none;
+  `}
 `;

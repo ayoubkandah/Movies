@@ -1,22 +1,24 @@
 import styled from 'styled-components';
 
 export const TooltipText = styled.p`
-  background-color: black;
+  background-color: ${({ background }) => background};
   border-radius: 0.3rem;
-  color: #fff;
+  color: ${({ color }) => color};
   height: 1.5rem;
   padding: 0 0.8rem 0 0.8rem;
   position: absolute;
   text-overflow: ellipsis;
   text-overflow: ellipsis;
   text-overflow: inherit;
+  border: 0.01rem solid black;
+
   transform: translate(${({ x }) => `${x}%`}, ${({ y }) => `${y}%`});
   white-space: nowrap;
   width: fit-content;
-  z-index: 4;
+  z-index: 15;
 
   &&::after {
-    border-color: black;
+    border-color: ${({ background }) => background};
     border-style: solid;
     border-width: 0.3125rem;
     content: '';
