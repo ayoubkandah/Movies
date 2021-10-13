@@ -110,7 +110,7 @@ export default function Sidebar() {
         </MainList>
       )}
 
-      {!mainList.more && (
+      {!mainList.more && !mainList.mobile && (
         <MainList
           onClick={() => {
             listHandle('more');

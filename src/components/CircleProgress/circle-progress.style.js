@@ -1,19 +1,18 @@
+import mq from 'config/mq';
 import styled, { keyframes } from 'styled-components';
 
 const before = keyframes`
 0% {      visibility: hidden;
  clip: rect(0px, 2.8125rem, 0rem, 0.9375rem);
-
 }
-100%{       clip: rect(0px, 2.8125rem, ${({ right }) =>
-  `${right}rem`}, 0.9375rem);
+100%{      
+   clip: rect(0px, 2.8125rem, ${({ right }) => `${right}rem`}, 0.9375rem);
 }
 `;
 
 const after = keyframes`
 0% { 
-
-     clip: rect(1.91rem, 0.9375rem, 3.125rem, 0rem);
+  clip: rect(1.91rem, 0.9375rem, 3.125rem, 0rem);
 }
 
 100%{     
@@ -25,6 +24,7 @@ const after = keyframes`
 `;
 
 export const Rate = styled.div`
+  display: none;
   width: 1.8rem;
   height: 1.8rem;
   position: absolute;
@@ -33,13 +33,15 @@ export const Rate = styled.div`
   left: 0.5rem;
   border-radius: 5rem;
   color: white;
-  display: flex;
   justify-content: center;
   align-items: center;
   border: 0.15rem solid
     ${({ color }) => (color === 'green' ? '#5c7a5c' : '#7a7a5c')};
 
   z-index: 7;
+  ${mq.dp`
+  display: flex;
+  `}
   &&::before {
     content: '';
     position: absolute;
@@ -52,6 +54,7 @@ export const Rate = styled.div`
 
     clip: rect(0rem, 2.8125rem, ${({ right }) => `${right}rem`}, 0.9375rem);
     animation-name: ${before};
+
     animation-duration: 2s;
     animation-iteration-count: 1;
 
@@ -73,7 +76,9 @@ export const Rate = styled.div`
       ${({ color }) => (color === 'green' ? '#7ac961' : '#bfc92a')};
     clip: rect(${({ left }) => `${2 - left}rem`}, 0.9375rem, 3.125rem, 0rem);
     animation-name: ${after};
-    animation-duration: 0.5s;
+    /* animation-duration: 0.5s; */
+    transition: all 1.5s ease;
+
     animation-delay: 0.83s;
     animation-fill-mode: forwards;
     overflow: hidden;

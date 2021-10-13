@@ -3,7 +3,12 @@ import propTypes from 'prop-types';
 import { useState } from 'react/cjs/react.development';
 import { Wrapper, CheckboxInput } from './checkbox.style';
 
-const Checkbox = ({ selected = false, handleChange, Inputvalue }) => {
+const Checkbox = ({
+  selected = false,
+  handleChange,
+  inputValue,
+  disabled = false,
+}) => {
   const [checked, setChecked] = useState(selected);
 
   const handleChecked = () => {
@@ -14,8 +19,9 @@ const Checkbox = ({ selected = false, handleChange, Inputvalue }) => {
     <Wrapper checked={checked} onClick={handleChecked}>
       <CheckboxInput
         checked={selected}
-        value={Inputvalue}
+        value={inputValue}
         type="checkbox"
+        disabled={disabled}
         onChange={handleChange}
       />
     </Wrapper>
@@ -25,7 +31,8 @@ const Checkbox = ({ selected = false, handleChange, Inputvalue }) => {
 export default Checkbox;
 
 Checkbox.propTypes = {
-  Inputvalue: propTypes.string.isRequired,
+  inputValue: propTypes.string.isRequired,
   selected: propTypes.bool.isRequired,
   handleChange: propTypes.func.isRequired,
+  disabled: propTypes.bool.isRequired,
 };

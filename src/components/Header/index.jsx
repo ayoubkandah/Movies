@@ -14,6 +14,7 @@ import {
   En,
   JoinTMD,
   Add,
+  NavBar,
 } from './header.styled';
 
 /**
@@ -44,22 +45,24 @@ export default function Header() {
   return (
     <>
       <Wrapper position={down}>
-        <LogoDP src={logoDP} />
-        <Hamburger onClick={menuHandle} />
-        <Sidebar />
-        <Logo />
-        <En>EN</En>
-        <Tooltip
-          Icon={Add}
-          text="can`t find a movie or TV show? Login to create it"
-          background="#fff"
-          color="#000"
-        />
+        <NavBar>
+          <LogoDP src={logoDP} />
+          <Hamburger onClick={menuHandle} />
+          <Sidebar />
+          <Logo />
+          <En>EN</En>
+          <Tooltip
+            Icon={Add}
+            text="can`t find a movie or TV show? Login to create it"
+            background="#fff"
+            color="#000"
+          />
 
-        <Login>Login</Login>
-        <JoinTMD>Join TMDB</JoinTMD>
-        <User />
-        <Search />
+          <Login>Login</Login>
+          <JoinTMD>Join TMDB</JoinTMD>
+          <User />
+          <Search />
+        </NavBar>
       </Wrapper>
     </>
   );

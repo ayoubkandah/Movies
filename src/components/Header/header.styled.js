@@ -7,13 +7,12 @@ import { ReactComponent as add } from 'assets/add.svg';
 import mq from 'config/mq';
 
 export const Wrapper = styled.div`
-  align-items: center;
-  background-color: #032541;
-  display: flex;
-  flex-direction: row;
   height: 4rem;
   position: fixed;
+  background-color: #032541;
+
   width: 100vw;
+
   z-index: 16;
   top: ${({ position }) => (position ? '-5rem' : '0rem')};
   transition: all 0.5s ease;
@@ -102,6 +101,7 @@ export const JoinTMD = styled.button`
 `;
 
 export const En = styled.button`
+  display: none;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 0.95rem;
   border: 0.01rem solid #fff;
@@ -116,6 +116,9 @@ export const En = styled.button`
     color: #032541;
     cursor: pointer;
   }
+  ${mq.dp`
+  display:block
+  `}
 `;
 
 export const Add = styled(add)`
@@ -126,4 +129,12 @@ export const Add = styled(add)`
   ${mq.dp`
   display:block
   `}
+`;
+
+export const NavBar = styled.div`
+  max-width: 90rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
 `;

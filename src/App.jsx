@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from 'pages/Home';
-import GlobalStyle from 'utility/global.style';
+import GlobalStyle from 'styles/global.style';
 
 function App() {
   return (

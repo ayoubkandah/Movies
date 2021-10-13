@@ -12,8 +12,8 @@ export const Wrapper = styled.div`
   position: absolute;
   transition: all 0.5s ease;
   width: 85vw;
-  bottom: -44.7rem;
-  z-index: 9;
+  top: 6vh;
+  z-index: -1;
 
   left: ${(props) => (props.active === 'show' ? '0' : '-50rem')};
 

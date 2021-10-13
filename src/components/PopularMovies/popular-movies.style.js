@@ -19,7 +19,8 @@ export const Wrapper = styled.div`
   flex-direction: row;
   max-width: 90rem;
   margin: 0 auto;
-flex-direction: row;
+  flex-direction: row;
+  padding:0 0 0 1rem;
 `}
 `;
 
@@ -29,4 +30,8 @@ export const MoviesWrapper = styled.div`
   ${mq.dp`
   margin:8.2rem 0rem 0 0;
   `}
+`;
+
+export const LoadMoreWrapper = styled.div`
+  display: inline-block;
 `;

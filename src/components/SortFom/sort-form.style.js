@@ -52,3 +52,27 @@ export const CheckboxLabel = styled.h3`
   font-size: 1.03rem;
   font-weight: 400;
 `;
+
+export const CalendarWrapper = styled.div`
+  width: 10rem;
+  margin: 1rem 1rem 1rem 0;
+`;
+
+export const Date = styled.h5`
+  margin: 2rem 0 0 1rem;
+  font-weight: 600;
+  color: gray;
+`;
+
+export const ReleasedDateWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TagsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 15rem;
+  margin-top: 0.5rem;
+`;
