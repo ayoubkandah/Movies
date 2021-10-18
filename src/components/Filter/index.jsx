@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import { Wrapper, Input, Name, Arrow } from './filter.style';
 
 /**
  * Filter label.
  * Shared component.
  *
+ * @param {String} name Label name.
+ *
  * @return {JSX.Element}
  */
-export default function Filter() {
+export default function Filter({ name }) {
   const [active, setActive] = useState(false);
+
   const handleActive = () => {
     setActive(!active);
   };
@@ -20,9 +24,13 @@ export default function Filter() {
         placeholder="Sort"
         type="select"
       >
-        <Name>Sort</Name>
+        <Name>{name}</Name>
         <Arrow active={active ? 'active' : 'notActive'} />
       </Input>
     </Wrapper>
   );
 }
+
+Filter.propTypes = {
+  name: propTypes.string.isRequired,
+};

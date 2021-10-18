@@ -1,7 +1,7 @@
 import SortForm from 'components/SortFom';
 import React, { useEffect, useRef, useState } from 'react';
 import MovieCard from 'components/MovieCard';
-import popularMovies from 'services/movies';
+import { discoverMovies, popularMovies } from 'services/movies';
 
 import { LoadMore } from 'styles/buttons.style';
 import {
@@ -13,55 +13,81 @@ import {
 } from './popular-movies.style';
 
 /**
- * Popular movies.
+ * Popular movies page.
  *
  * @return {JSX.Element}
  */
 export default function PopularMovies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [params, setParams] = useState();
   const [scrolling, setScrolling] = useState(false);
+  const [loading, setLoading] = useState();
   const loadMore = useRef();
 
+  const handleSubmit = (e, inputs) => {
+    e.preventDefault();
+    let path = ``;
+    const keys = Object.keys(inputs);
+
+    keys.forEach((key) => {
+      path = `${path}&${key}=${inputs[key]}`;
+    });
+
+    setMovies([]);
+    setParams(path);
+  };
+
   const getMovies = async () => {
-    const data = await popularMovies(page);
+    const data = params
+      ? await discoverMovies(params, page)
+      : await popularMovies(page);
+    setLoading(true);
     setMovies([...movies, ...data]);
   };
 
-  const handlePage = (pageNumber) => {
-    setPage(pageNumber);
+  const handleScroll = () => {
+    if (!scrolling) {
+      setPage(2);
+      setScrolling(true);
+      setLoading(false);
+    }
   };
 
-  const handleScroll = () => {
-    if (!scrolling) setScrolling(true);
-  };
   useEffect(() => {
-    if (scrolling) {
-      let num = 1;
-      const observer = new IntersectionObserver(
-        (entries) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (scrolling && loading) {
           if (entries[0].isIntersecting) {
-            // console.log(entries[0].isIntersecting);
-            console.log(entries[0].isIntersecting);
-            num += 1;
-            handlePage(num);
+            setLoading(false);
+            setPage(page + 1);
           }
-        },
-        { rootMargin: '100px 0px 0px 0px' }
-      );
-      observer.observe(loadMore.current);
-    }
-  }, [scrolling]);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(loadMore.current);
+
+    return () => {
+      observer.unobserve(loadMore.current);
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    setPage(1);
+    getMovies();
+    setScrolling(false);
+  }, [params]);
 
   useEffect(() => {
     getMovies();
   }, [page]);
-  console.log(movies);
+
   return (
     <Wrapper>
       <FormCardsWrapper>
         <Title>Popular Movies</Title>
-        <SortForm />
+        <SortForm handleSubmit={handleSubmit} />
       </FormCardsWrapper>
       <LoadMoreWrapper>
         <MoviesWrapper>

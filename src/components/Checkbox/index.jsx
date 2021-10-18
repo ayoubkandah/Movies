@@ -8,6 +8,7 @@ const Checkbox = ({
   handleChange,
   inputValue,
   disabled = false,
+  name,
 }) => {
   const [checked, setChecked] = useState(selected);
 
@@ -18,9 +19,10 @@ const Checkbox = ({
   return (
     <Wrapper checked={checked} onClick={handleChecked}>
       <CheckboxInput
+        name={name}
+        type="checkbox"
         checked={selected}
         value={inputValue}
-        type="checkbox"
         disabled={disabled}
         onChange={handleChange}
       />
@@ -35,4 +37,5 @@ Checkbox.propTypes = {
   selected: propTypes.bool.isRequired,
   handleChange: propTypes.func.isRequired,
   disabled: propTypes.bool.isRequired,
+  name: propTypes.string.isRequired,
 };

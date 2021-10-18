@@ -4,17 +4,17 @@ import logoDP from 'assets/logoHigh.png';
 import Sidebar from 'components/Sidebar';
 import Tooltip from 'components/Tooltip';
 import {
-  Wrapper,
-  LogoDP,
-  Search,
-  Hamburger,
+  En,
+  Add,
   Logo,
   User,
   Login,
-  En,
-  JoinTMD,
-  Add,
+  LogoDP,
+  Search,
   NavBar,
+  Wrapper,
+  JoinTMD,
+  Hamburger,
 } from './header.styled';
 
 /**
@@ -24,8 +24,8 @@ import {
  */
 export default function Header() {
   const menu = useInterfaceContext();
-  const [y, setY] = useState(window.scrollY);
   const [down, setDown] = useState(false);
+  const [y, setY] = useState(window.scrollY);
 
   const menuHandle = () => menu.menuHandle();
   const handleNavigation = (e) => {
@@ -42,6 +42,7 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener('scroll', (e) => handleNavigation(e));
   }, [y]);
+
   return (
     <>
       <Wrapper position={down}>

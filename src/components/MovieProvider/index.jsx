@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+import propTypes from 'prop-types';
+import { image } from 'config/variables';
+import { Img, ProviderButton } from './movie-provider.style';
+
+/**
+ * Movie provider.
+ *
+ * @param {provider} provider Provider data.
+ * @param {Function} handleChange Function that handle onChange.
+ *
+ * @return {JSX.Element}
+ */
+
+const MovieProvider = ({ provider, handleChange }) => {
+  const [selected, setSelected] = useState(false);
+
+  const handleSelected = () => {
+    handleChange({
+      type: 'with_watch_providers',
+      value: provider.provider_id,
+    });
+
+    setSelected(!selected);
+  };
+  return (
+    <ProviderButton selected={selected} onClick={handleSelected}>
+      <Img src={`${image}${provider.logo_path}`} />
+    </ProviderButton>
+  );
+};
+
+export default MovieProvider;
+
+MovieProvider.propTypes = {
+  provider: propTypes.objectOf(propTypes.string, propTypes.number).isRequired,
+  handleChange: propTypes.func.isRequired,
+};

@@ -16,7 +16,7 @@ const Tags = ({ data, handleChange }) => {
         if (!checked) {
           handleChange(data);
         } else {
-          handleChange({ name: data.name, value: null });
+          handleChange({ type: data.type, value: null });
         }
         handleChecked();
       }}

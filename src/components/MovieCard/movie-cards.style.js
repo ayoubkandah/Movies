@@ -63,9 +63,11 @@ export const Title = styled.h2`
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
-  @media (min-width: row45rem) {
-    margin: 0.5rem 0 0 0;
-  }
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Line
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Date = styled.h4`

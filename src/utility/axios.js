@@ -1,5 +1,5 @@
 import axios from 'axios';
-import URL from 'config/variables';
+import { movieURL } from 'config/variables';
 
 /**
  * Get method.
@@ -9,9 +9,12 @@ import URL from 'config/variables';
  * @returns {Promise<Object>}
  */
 const get = async (path) => {
+  console.log(
+    `${movieURL}${path} urllllllllllllllllllllllllllllllllllllllllllll`
+  );
   const res = await axios({
     method: 'Get',
-    url: `${URL}${path}`,
+    url: `${movieURL}${path}`,
   });
 
   return res.data;
