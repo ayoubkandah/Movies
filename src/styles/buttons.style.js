@@ -14,14 +14,15 @@ export const LoadMore = styled.button`
   font-size: 1.5rem;
   box-sizing: border-box;
 
-  && :hover {
+  &&:hover {
     color: #032541;
+    cursor: pointer;
   }
+
   ${mq.dp`
     width: -webkit-fill-available;
   margin-right:3rem;
   margin-left:1rem;
-  // padding:0 auto 0 auto;
 `}
 `;
 

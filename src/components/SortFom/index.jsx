@@ -34,28 +34,28 @@ import {
 } from './sort-form.style';
 
 const sortOptions = [
-  { name: 'Popularity Descending', value: 'popularity.desc', type: 'sort_by' },
-  { name: 'Popularity Ascending', value: 'popularity.asc', type: 'sort_by' },
-  { name: 'Rating Descending', value: 'vote_average.desc', type: 'sort_by' },
-  { name: 'Rating Ascending', value: 'vote_average.asc', type: 'sort_by' },
+  { label: 'Popularity Descending', value: 'popularity.desc', name: 'sort_by' },
+  { label: 'Popularity Ascending', value: 'popularity.asc', name: 'sort_by' },
+  { label: 'Rating Descending', value: 'vote_average.desc', name: 'sort_by' },
+  { label: 'Rating Ascending', value: 'vote_average.asc', name: 'sort_by' },
   {
-    name: 'Release Date Descending',
+    label: 'Release Date Descending',
     value: 'release_date.desc',
-    type: 'sort_by',
+    name: 'sort_by',
   },
   {
-    name: 'Release Date Ascending',
+    label: 'Release Date Ascending',
     value: 'release_date.asc',
-    type: 'sort_by',
+    name: 'sort_by',
   },
-  { name: 'Title (A-Z)', value: 'original_title.asc', type: 'sort_by' },
-  { name: 'Title (Z-A)', value: 'original_title.desc', type: 'sort_by' },
+  { label: 'Title (A-Z)', value: 'original_title.asc', name: 'sort_by' },
+  { label: 'Title (Z-A)', value: 'original_title.desc', name: 'sort_by' },
 ];
 
 /**
- * Shared component for sorting form.
+ * Sorting form.
  *
- * @param {Function} handleSubmit Handling onSubmit on the form.
+ * @param {Function} props.handleSubmit Handling onSubmit for form.
  *
  * @return {JSX.Element}
  */
@@ -77,7 +77,7 @@ const SortForm = ({ handleSubmit }) => {
   };
 
   const handleOnchange = ({ target }) => {
-    console.log(target.name);
+    console.log(target);
     setInputs({ ...inputs, [target.name]: target.value });
   };
 
@@ -97,9 +97,9 @@ const SortForm = ({ handleSubmit }) => {
         const filteredData = [];
         data.forEach((element) => {
           const obj = {
-            type: 'genres',
+            name: 'genres',
             value: element.id,
-            name: element.name,
+            label: element.name,
           };
           filteredData.push(obj);
         });
@@ -109,14 +109,14 @@ const SortForm = ({ handleSubmit }) => {
     }
   };
 
-  const handleButtons = ({ type, value }) => {
-    if (type === 'genres' || type === 'with_watch_providers') {
+  const handleButtons = ({ name, value }) => {
+    if (name === 'genres' || name === 'with_watch_providers') {
       setInputs({
         ...inputs,
-        [type]: inputs[type] ? [...inputs[type], value] : [value],
+        [name]: inputs[name] ? [...inputs[name], value] : [value],
       });
     } else {
-      setInputs({ ...inputs, [type]: value });
+      setInputs({ ...inputs, [name]: value });
     }
   };
 
@@ -127,10 +127,10 @@ const SortForm = ({ handleSubmit }) => {
 
       regions.forEach((region) => {
         const obj = {
-          name: region.english_name,
+          label: region.english_name,
           value: region.iso_3166_1,
           img: flag(region.iso_3166_1),
-          type: 'watch_region',
+          name: 'watch_region',
         };
 
         data.push(obj);
@@ -147,13 +147,14 @@ const SortForm = ({ handleSubmit }) => {
 
       languagesNotFiltered.forEach((language) => {
         const obj = {
-          name: language.english_name,
+          label: language.english_name,
           value: language.iso_639_1,
-          type: 'with_original_language',
+          name: 'with_original_language',
         };
 
         data.push(obj);
       });
+      console.log(data, 'lang');
 
       setLanguagesData(data);
     }
@@ -170,6 +171,7 @@ const SortForm = ({ handleSubmit }) => {
     }
   }, [inputs]);
 
+  console.log(inputs);
   return (
     <Form
       onSubmit={(event) => {
@@ -187,13 +189,14 @@ const SortForm = ({ handleSubmit }) => {
               <LabelName>Sort Results By</LabelName>
             </NameContainer>
             <Dropdown
-              label={sortOptions}
+              options={sortOptions}
               handleChange={handleButtons}
               defaultValue={{
-                name: 'Popularity Descending',
+                label: 'Popularity Descending',
                 value: 'PD',
-                type: 'sort',
+                name: 'sort',
               }}
+              search={false}
             />
           </LabelWrapper>
         )}
@@ -209,6 +212,7 @@ const SortForm = ({ handleSubmit }) => {
               <NameContainer>
                 <LabelName>Show Me</LabelName>
                 <Tooltip
+                  color="white"
                   Icon={Icon}
                   text="Login to filter items you've watched"
                   background="#032541"
@@ -219,11 +223,22 @@ const SortForm = ({ handleSubmit }) => {
                 checked={values.everything}
                 value="everything"
                 handleChange={test}
+                name="show"
               />
               <RadioLabel onClick={handleFiltering}> Everything</RadioLabel>
-              <Radio checked={values.sec} value="sec" handleChange={test} />
+              <Radio
+                name="show"
+                checked={values.sec}
+                value="sec"
+                handleChange={test}
+              />
               <RadioLabel>Movies I Haven`t Seen</RadioLabel>
-              <Radio checked={values.sec} value="sec" handleChange={test} />
+              <Radio
+                name="show"
+                checked={values.sec}
+                value="sec"
+                handleChange={test}
+              />
               <RadioLabel>Movies I Have Seen</RadioLabel>
             </LabelWrapper>
 
@@ -233,7 +248,8 @@ const SortForm = ({ handleSubmit }) => {
                 inputValue="LL"
                 selected
                 handleChange={handleOnchange}
-                name="availble"
+                name="available"
+                disabled={false}
               />
               <CheckboxLabel>Search All Availabilities?</CheckboxLabel>
 
@@ -242,7 +258,7 @@ const SortForm = ({ handleSubmit }) => {
                 <CalendarWrapper>
                   <BasicDatePicker
                     handleChange={handleCalendar}
-                    type="primary_release_date.gte"
+                    label="primary_release_date.gte"
                   />
                 </CalendarWrapper>
               </ReleasedDateWrapper>
@@ -251,7 +267,7 @@ const SortForm = ({ handleSubmit }) => {
                 <CalendarWrapper>
                   <BasicDatePicker
                     handleChange={handleCalendar}
-                    type="primary_release_date.lte"
+                    label="primary_release_date.lte"
                   />
                 </CalendarWrapper>
               </ReleasedDateWrapper>
@@ -261,12 +277,12 @@ const SortForm = ({ handleSubmit }) => {
               <LabelName>Languages</LabelName>
               <DropdownButton onClick={getLanguages}>
                 <Dropdown
-                  label={languagesData}
+                  options={languagesData || []}
                   handleChange={handleButtons}
                   defaultValue={{
-                    name: 'English',
+                    label: 'English',
                     value: 'en',
-                    type: 'language',
+                    name: 'language',
                   }}
                   search
                 />
@@ -279,7 +295,11 @@ const SortForm = ({ handleSubmit }) => {
                 <TagsWrapper>
                   {genres.map((data) => (
                     <>
-                      <Tags data={data} handleChange={handleButtons} />
+                      <Tags
+                        key={data.id}
+                        data={data}
+                        handleChange={handleButtons}
+                      />
                     </>
                   ))}
                 </TagsWrapper>
@@ -290,7 +310,7 @@ const SortForm = ({ handleSubmit }) => {
               <LabelName>Keywords</LabelName>
               <Input
                 data={{
-                  name: 'keyword',
+                  name: 'with_keywords',
                   placeholder: 'Filter by keywords...',
                   value: 'keyword',
                 }}
@@ -314,6 +334,7 @@ const SortForm = ({ handleSubmit }) => {
                   Icon={Icon}
                   text="Login to filter items you've watched"
                   background="#032541"
+                  color="white"
                 />
               </NameContainer>
               <CheckboxWrapper>
@@ -333,13 +354,13 @@ const SortForm = ({ handleSubmit }) => {
               <LabelName>Country</LabelName>
               <DropdownButton onClick={getCountries}>
                 <Dropdown
-                  label={countries}
+                  options={countries || []}
                   handleChange={handleButtons}
                   defaultValue={{
-                    name: 'Argentina',
+                    label: 'Argentina',
                     value: 'AR',
                     img: 'https://www.countryflags.io/AR/flat/64.png',
-                    type: 'country',
+                    name: 'country',
                   }}
                   search
                 />
@@ -348,7 +369,8 @@ const SortForm = ({ handleSubmit }) => {
                 <ProviderWrapper>
                   {provider.map((providerData) => (
                     <MovieProvider
-                      provider={providerData}
+                      key={providerData.id}
+                      provider={providerData || []}
                       handleChange={handleButtons}
                     />
                   ))}

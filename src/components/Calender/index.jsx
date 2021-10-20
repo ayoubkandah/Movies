@@ -5,18 +5,27 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import propTypes from 'prop-types';
 
-const Calendar = ({ handleChange, defaultValue, type }) => {
-  const [date, setDate] = useState(defaultValue);
+/**
+ * Calendar.
+ *
+ * @param {Function} props.handleChange Handle onChange.
+ * @param {String}   props.defaultValue Default value of calendar.
+ * @param {String}   props.name         Name of input.
+ *
+ * @returns
+ */
+const Calendar = ({ handleChange, label }) => {
+  const [date, setDate] = useState();
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        disableFuture={type === 'primary_release_date.gte'}
+        disableFuture={label === 'primary_release_date.gte'}
         openTo="year"
         value={date}
         views={['year', 'month', 'day']}
         onChange={(value) => {
-          handleChange(value, type);
           setDate(value);
+          handleChange(value, label);
         }}
         // eslint-disable-next-line react/jsx-props-no-spreading
         renderInput={(params) => <TextField {...params} />}
@@ -25,10 +34,9 @@ const Calendar = ({ handleChange, defaultValue, type }) => {
   );
 };
 
-export default Calendar;
-
 Calendar.propTypes = {
   handleChange: propTypes.func.isRequired,
-  defaultValue: propTypes.string.isRequired,
-  type: propTypes.string.isRequired,
+  label: propTypes.string.isRequired,
 };
+
+export default Calendar;

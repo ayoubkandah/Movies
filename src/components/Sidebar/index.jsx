@@ -15,14 +15,14 @@ import {
  *
  * @return {JSX.Element}
  */
-export default function Sidebar() {
+const Sidebar = () => {
   const menu = useInterfaceContext();
 
   const [mainList, setMainList] = useState({
-    movies: null,
     tv: null,
-    people: null,
     more: null,
+    movies: null,
+    people: null,
     mobile: true,
   });
 
@@ -157,4 +157,6 @@ export default function Sidebar() {
       )}
     </Wrapper>
   );
-}
+};
+
+export default Sidebar;

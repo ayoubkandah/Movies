@@ -1,3 +1,4 @@
+import mq from 'config/mq';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -5,32 +6,39 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 1.2rem;
-  padding: 0 1.3rem 0 1.3rem;
-  @media (min-width: 45rem) {
+  padding: 0 0 0 1.3rem;
+
+  ${mq.dp` 
+    padding: 0 1.3rem 0 1.3rem;
+
     flex-direction: column;
-  }
+  `}
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  width: -webkit-fill-available;
+  border: 0.01rem solid black;
+  max-width: -webkit-fill-available;
   box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
   border: 0.063rem solid rgba(227, 227, 227, 1);
   border-left: none;
   background-color: #fff;
   height: 8.7rem;
   position: relative;
+  margin: 0 1.3rem 0 0;
   border-radius: 0 0.4rem 0.4rem 0;
 
-  @media (min-width: 45rem) {
+  ${mq.dp`
+    margin: 0;
+
     height: 5.0625rem;
     width: 11.25rem;
     border: 0.063rem solid rgba(227, 227, 227, 1);
     border-top: none;
     border-radius: 0 0rem 0.45rem 0.45rem;
-  }
+ 
+  `}
 `;
 
 export const IMG = styled.img`
@@ -43,7 +51,7 @@ export const IMG = styled.img`
   padding: 0;
   position: relative;
 
-  @media (min-width: 45rem) {
+  ${mq.dp` 
     height: 17.0625rem;
     width: 11.25rem;
     padding: 0 0 0;
@@ -55,7 +63,7 @@ export const IMG = styled.img`
     border-bottom: none;
 
     border-radius: 0.45rem 0.45rem 0 0rem;
-  }
+ `}
 `;
 
 export const Title = styled.h2`
@@ -89,7 +97,7 @@ export const Overview = styled.h3`
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
-  @media (min-width: 45rem) {
+  ${mq.dp` 
     display: none;
-  }
+  `}
 `;

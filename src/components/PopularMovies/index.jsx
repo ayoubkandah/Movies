@@ -2,28 +2,27 @@ import SortForm from 'components/SortFom';
 import React, { useEffect, useRef, useState } from 'react';
 import MovieCard from 'components/MovieCard';
 import { discoverMovies, popularMovies } from 'services/movies';
-
 import { LoadMore } from 'styles/buttons.style';
 import {
-  FormCardsWrapper,
-  MoviesWrapper,
   Title,
   Wrapper,
+  MoviesWrapper,
   LoadMoreWrapper,
+  FormCardsWrapper,
 } from './popular-movies.style';
 
 /**
- * Popular movies page.
+ * Popular movies page components.
  *
  * @return {JSX.Element}
  */
-export default function PopularMovies() {
-  const [movies, setMovies] = useState([]);
+const PopularMovies = () => {
+  const loadMore = useRef();
   const [page, setPage] = useState(1);
   const [params, setParams] = useState();
-  const [scrolling, setScrolling] = useState(false);
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState();
-  const loadMore = useRef();
+  const [scrolling, setScrolling] = useState(false);
 
   const handleSubmit = (e, inputs) => {
     e.preventDefault();
@@ -42,6 +41,7 @@ export default function PopularMovies() {
     const data = params
       ? await discoverMovies(params, page)
       : await popularMovies(page);
+
     setLoading(true);
     setMovies([...movies, ...data]);
   };
@@ -57,15 +57,14 @@ export default function PopularMovies() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (scrolling && loading) {
-          if (entries[0].isIntersecting) {
-            setLoading(false);
-            setPage(page + 1);
-          }
+        if (scrolling && loading && entries[0].isIntersecting) {
+          setLoading(false);
+          setPage(page + 1);
         }
       },
       { threshold: 0 }
     );
+
     observer.observe(loadMore.current);
 
     return () => {
@@ -89,15 +88,17 @@ export default function PopularMovies() {
         <Title>Popular Movies</Title>
         <SortForm handleSubmit={handleSubmit} />
       </FormCardsWrapper>
+
       <LoadMoreWrapper>
         <MoviesWrapper>
           {movies && (
             <>
               {movies.map((movie) => (
-                <MovieCard movie={movie} />
+                <MovieCard key={movie.id} movie={movie} />
               ))}
             </>
           )}
+
           <LoadMore ref={loadMore} onClick={handleScroll}>
             Load More
           </LoadMore>
@@ -105,4 +106,6 @@ export default function PopularMovies() {
       </LoadMoreWrapper>
     </Wrapper>
   );
-}
+};
+
+export default PopularMovies;

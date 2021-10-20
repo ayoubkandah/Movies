@@ -18,6 +18,8 @@ export const Wrapper = styled.div`
   left: ${(props) => (props.active === 'show' ? '0' : '-50rem')};
 
   ${mq.dp`
+  z-index: 1;
+
   position: static;
   flex-direction:row;    
   background-color:transparent;
@@ -36,6 +38,10 @@ export const MainList = styled.h3`
   margin: 0 0 0.6rem 0;
   padding: 0;
   white-space: nowrap;
+  z-index: 10;
+  &&:hover {
+    cursor: pointer;
+  }
   ${mq.dp`
 font-size:1rem;
 margin:0 1.2rem 1.2rem 0;

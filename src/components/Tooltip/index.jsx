@@ -1,22 +1,18 @@
 import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { TooltipText, TooltipContainer } from './tooltip.style';
 
 /**
  * Tooltip shared component.
  *
- * @param {JSX.Element} Icon Icon component.
- * @param {JSX.Element} text Tooltip text.
- *
+ * @param {JSX.Element} props.Icon       Icon component.
+ * @param {String}      props.text       Tooltip text.
+ * @param {String}      props.background Background color.
+ * @param {String}      props.color      Font color.
  *
  * @return {JSX.Element}
  */
-export default function Tooltip({
-  Icon,
-  text,
-  background = 'black',
-  color = 'white',
-}) {
+const Tooltip = ({ Icon, text, background = 'black', color = 'white' }) => {
   const tools = useRef();
   const [xy, setXY] = useState({ x: null, y: null });
   const [isPositionUp, setIsPositionUp] = useState('up');
@@ -58,11 +54,18 @@ export default function Tooltip({
       )}
     </TooltipContainer>
   );
-}
+};
 
 Tooltip.propTypes = {
-  Icon: PropTypes.elementType.isRequired,
-  text: PropTypes.string.isRequired,
-  background: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  Icon: propTypes.elementType.isRequired,
+  text: propTypes.string.isRequired,
+  background: propTypes.string,
+  color: propTypes.string,
 };
+
+Tooltip.defaultProps = {
+  background: propTypes.string,
+  color: propTypes.string,
+};
+
+export default Tooltip;

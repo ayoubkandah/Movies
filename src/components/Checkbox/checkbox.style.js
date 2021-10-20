@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const CheckboxInput = styled.input`
-  opacity: 0;
-  width: 0.8rem;
   height: 0.85rem;
+  opacity: 0;
   padding: 0;
+  width: 0.8rem;
 `;
 
 export const Wrapper = styled.div`
@@ -34,8 +34,8 @@ export const Wrapper = styled.div`
 `;
 
 export const CheckboxStyle = styled.div`
+  background-color: red;
+  height: 1rem;
   position: absolute;
   width: 1rem;
-  height: 1rem;
-  background-color: red;
 `;

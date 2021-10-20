@@ -6,8 +6,8 @@ import { Img, ProviderButton } from './movie-provider.style';
 /**
  * Movie provider.
  *
- * @param {provider} provider Provider data.
- * @param {Function} handleChange Function that handle onChange.
+ * @param {provider} props.provider Provider data.
+ * @param {Function} props.handleChange Function that handle onChange.
  *
  * @return {JSX.Element}
  */
@@ -17,22 +17,23 @@ const MovieProvider = ({ provider, handleChange }) => {
 
   const handleSelected = () => {
     handleChange({
-      type: 'with_watch_providers',
+      name: 'with_watch_providers',
       value: provider.provider_id,
     });
 
     setSelected(!selected);
   };
+
   return (
-    <ProviderButton selected={selected} onClick={handleSelected}>
+    <ProviderButton type="button" selected={selected} onClick={handleSelected}>
       <Img src={`${image}${provider.logo_path}`} />
     </ProviderButton>
   );
 };
 
-export default MovieProvider;
-
 MovieProvider.propTypes = {
   provider: propTypes.objectOf(propTypes.string, propTypes.number).isRequired,
   handleChange: propTypes.func.isRequired,
 };
+
+export default MovieProvider;

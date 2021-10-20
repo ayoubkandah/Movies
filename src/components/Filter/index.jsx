@@ -4,13 +4,12 @@ import { Wrapper, Input, Name, Arrow } from './filter.style';
 
 /**
  * Filter label.
- * Shared component.
  *
- * @param {String} name Label name.
+ * @param {String} props.name Label name.
  *
  * @return {JSX.Element}
  */
-export default function Filter({ name }) {
+const Filter = ({ name }) => {
   const [active, setActive] = useState(false);
 
   const handleActive = () => {
@@ -29,8 +28,10 @@ export default function Filter({ name }) {
       </Input>
     </Wrapper>
   );
-}
+};
 
 Filter.propTypes = {
   name: propTypes.string.isRequired,
 };
+
+export default Filter;

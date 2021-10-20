@@ -5,6 +5,9 @@ import mq from 'config/mq';
 export const Wrapper = styled.div`
   margin: 0 0 0 0;
   padding: 0;
+  &&:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Input = styled.div`

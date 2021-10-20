@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Border, Rate, RatePercentage } from './circle-progress.style';
 
+/**
+ * Circle Rate.
+ *
+ * @param {Number} props.percentage Percentage number.
+ *
+ * @return {JSX.Element}
+ */
 const CircleProgress = ({ percentage }) => {
   const [percentageToRem, setPercentToRem] = useState({
     right: null,
     left: null,
   });
+
+  // Calculation each half of circle.
   useEffect(() => {
     let leftPxToRem;
 
@@ -43,8 +52,8 @@ const CircleProgress = ({ percentage }) => {
   );
 };
 
-export default CircleProgress;
-
 CircleProgress.propTypes = {
   percentage: PropTypes.number.isRequired,
 };
+
+export default CircleProgress;

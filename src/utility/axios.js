@@ -9,9 +9,8 @@ import { movieURL } from 'config/variables';
  * @returns {Promise<Object>}
  */
 const get = async (path) => {
-  console.log(
-    `${movieURL}${path} urllllllllllllllllllllllllllllllllllllllllllll`
-  );
+  console.log(`${movieURL}${path} url`);
+
   const res = await axios({
     method: 'Get',
     url: `${movieURL}${path}`,

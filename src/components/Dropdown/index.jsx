@@ -14,18 +14,18 @@ import {
 } from './dropdown.style';
 
 /**
- * Dropdown shared component.
+ * Dropdown component.
  *
- * @param {String} label Label name.
- * @param {String} defaultValue Default value for input.
- * @param {Function} handleChange Handle Onchange.
- * @param {Boolean} search Trigger search.
+ * @param {String}   props.options Label name.
+ * @param {String}   props.defaultValue Default value for input.
+ * @param {Function} props.handleChange Handle Onchange.
+ * @param {Boolean}  props.search Trigger search.
  *
  * @return {JSX.Element}
  */
-const Dropdown = ({ label, defaultValue, handleChange, search }) => {
+const Dropdown = ({ options, defaultValue, handleChange, search }) => {
   const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState(label);
+  const [filter, setFilter] = useState(options);
   const [inputValue, setInputValue] = useState(defaultValue);
 
   const handleDropdown = () => {
@@ -35,12 +35,13 @@ const Dropdown = ({ label, defaultValue, handleChange, search }) => {
   const handleSelect = (optionValue) => {
     setInputValue(optionValue);
     setOpen(false);
+
     handleChange(optionValue);
   };
 
-  // Search in options
+  // Search in options.
   const handleSearch = ({ target }) => {
-    const filtered = label.filter((value) =>
+    const filtered = options.filter((value) =>
       value.name.toLowerCase().includes(target.value.toLowerCase())
     );
 
@@ -48,52 +49,51 @@ const Dropdown = ({ label, defaultValue, handleChange, search }) => {
   };
 
   useEffect(() => {
-    setFilter(label);
-  }, [label]);
+    setFilter(options);
+    console.log(options);
+  }, [options]);
 
   return (
     <Wrapper>
       <Select type="button" open={open} onClick={handleDropdown}>
         <Selected>
           {inputValue.img && <Img src={inputValue.img} />}
-          {inputValue.name}
+          {inputValue.label}
         </Selected>
         <Arrow />
       </Select>
 
       {open && (
-        <>
-          <Options>
-            {search && (
-              <SearchWrapper>
-                <Search onChange={handleSearch} />
-                <SearchIcon />
-              </SearchWrapper>
-            )}
-            {filter && (
-              <>
-                {filter.map((option) => (
-                  <Option
-                    selected={inputValue === option && true}
-                    key={option.value}
-                    onClick={() => handleSelect(option)}
-                  >
-                    {option.img && <Img src={option.img} />}
+        <Options>
+          {search && (
+            <SearchWrapper>
+              <Search onChange={handleSearch} />
+              <SearchIcon />
+            </SearchWrapper>
+          )}
+          {filter && (
+            <>
+              {filter.map((option) => (
+                <Option
+                  selected={inputValue === option && true}
+                  key={option.value}
+                  onClick={() => handleSelect(option)}
+                >
+                  {option.img && <Img src={option.img} />}
 
-                    {option.name}
-                  </Option>
-                ))}
-              </>
-            )}
-          </Options>
-        </>
+                  {option.label}
+                </Option>
+              ))}
+            </>
+          )}
+        </Options>
       )}
     </Wrapper>
   );
 };
 
 Dropdown.propTypes = {
-  label: propTypes.arrayOf(propTypes.object).isRequired,
+  options: propTypes.arrayOf(propTypes.object).isRequired,
   handleChange: propTypes.func.isRequired,
   defaultValue: propTypes.objectOf(propTypes.string).isRequired,
   search: propTypes.bool.isRequired,

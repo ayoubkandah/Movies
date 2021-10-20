@@ -3,6 +3,15 @@ import propTypes from 'prop-types';
 import { useState } from 'react/cjs/react.development';
 import Tag from './tags.style';
 
+/**
+ * Tag button.
+ *
+ * @param {Object} props.data Tags name and value.
+ * @param {Function} props.handleChange handle onChange.
+ *
+ *
+ * @return {JSX.Element}
+ */
 const Tags = ({ data, handleChange }) => {
   const [checked, setChecked] = useState(false);
 
@@ -12,24 +21,29 @@ const Tags = ({ data, handleChange }) => {
 
   return (
     <Tag
+      type="button"
       onClick={() => {
         if (!checked) {
           handleChange(data);
         } else {
-          handleChange({ type: data.type, value: null });
+          handleChange({ name: data.name, value: null });
         }
         handleChecked();
       }}
       checked={checked}
     >
-      {data.name}
+      {data.label}
     </Tag>
   );
 };
 
-export default Tags;
-
 Tags.propTypes = {
-  data: propTypes.objectOf(propTypes.string).isRequired,
+  data: propTypes.shape({
+    name: propTypes.string,
+    label: propTypes.string,
+    value: propTypes.number,
+  }).isRequired,
   handleChange: propTypes.func.isRequired,
 };
+
+export default Tags;

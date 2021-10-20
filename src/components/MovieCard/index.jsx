@@ -14,7 +14,7 @@ import {
 /**
  * Shared component for movie card.
  *
- * @param {Object} movie Movie data needed for render.
+ * @param {Object} props.movie Movie data needed for render.
  *
  * @return {JSX.Element}
  */
@@ -41,6 +41,7 @@ const MovieCard = ({ movie }) => {
         <IMG
           src={movie.poster_path ? image + movie.poster_path : corruptImage}
         />
+
         <Container>
           <CircleProgress percentage={movie.vote_average} />
           <Title>{movie.title}</Title>

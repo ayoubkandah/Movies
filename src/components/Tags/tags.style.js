@@ -12,6 +12,7 @@ const Tag = styled.button`
   color: ${({ checked }) => checked && '#fff'};
   border-color: ${({ checked }) => checked && 'rgba(1, 180, 228)'};
   &&:hover {
+    cursor: pointer;
     background-color: rgba(1, 180, 228);
     color: #fff;
     border-color: rgba(1, 180, 228);
