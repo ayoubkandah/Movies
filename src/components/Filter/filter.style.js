@@ -1,34 +1,35 @@
 import styled from 'styled-components';
 import { ReactComponent as arrow } from 'assets/arrow.svg';
 import mq from 'config/mq';
+import colors from 'styles/colors';
 
 export const Wrapper = styled.div`
   margin: 0 0 0 0;
   padding: 0;
+
   &&:hover {
     cursor: pointer;
   }
 `;
 
 export const Input = styled.div`
+  background-color: transparent;
+  border: 0.1rem solid ${colors.borderWhite};
+  border-left: none;
+  border-radius: 0.3rem 0.3rem 0rem 0;
+  border-right: none;
+  color: black;
+  display: inline-block;
+  height: 3rem;
+  width: 89vw;
+
   &&:active {
     background-color: #b1e2ff;
   }
 
-  display: inline-block;
-  height: 3rem;
-  width: 89vw;
-  border: 0.1rem solid #e7e6e6;
-  border-left: none;
-  border-right: none;
-  border-radius: 0.3rem 0.3rem 0rem 0;
-
   ${mq.dp`
-  width:16.125rem ;
-
+    width:16.125rem ;
   `}
-  color: black;
-  background-color: transparent;
 `;
 
 export const Name = styled.h3`

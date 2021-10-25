@@ -16,10 +16,10 @@ import {
 /**
  * Dropdown component.
  *
- * @param {String}   props.options Label name.
+ * @param {String}   props.options      Label name.
  * @param {String}   props.defaultValue Default value for input.
  * @param {Function} props.handleChange Handle Onchange.
- * @param {Boolean}  props.search Trigger search.
+ * @param {Boolean}  props.search       Trigger search.
  *
  * @return {JSX.Element}
  */

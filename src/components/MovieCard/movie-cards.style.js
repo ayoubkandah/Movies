@@ -9,94 +9,90 @@ export const Wrapper = styled.div`
   padding: 0 0 0 1.3rem;
 
   ${mq.dp` 
-    padding: 0 1.3rem 0 1.3rem;
-
     flex-direction: column;
+    padding: 0 1.3rem 0 1.3rem;
   `}
 `;
 
 export const Container = styled.div`
+  background-color: #fff;
+  border-left: none;
+  border-radius: 0 0.4rem 0.4rem 0;
+  border: 0.01rem solid black;
+  border: 0.063rem solid rgba(227, 227, 227, 1);
+  box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
   display: flex;
   flex-direction: column;
-  border: 0.01rem solid black;
-  max-width: -webkit-fill-available;
-  box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
-  border: 0.063rem solid rgba(227, 227, 227, 1);
-  border-left: none;
-  background-color: #fff;
   height: 8.7rem;
-  position: relative;
   margin: 0 1.3rem 0 0;
-  border-radius: 0 0.4rem 0.4rem 0;
+  max-width: -webkit-fill-available;
+  position: relative;
 
   ${mq.dp`
-    margin: 0;
-
-    height: 5.0625rem;
-    width: 11.25rem;
-    border: 0.063rem solid rgba(227, 227, 227, 1);
-    border-top: none;
     border-radius: 0 0rem 0.45rem 0.45rem;
- 
+    border-top: none;
+    border: 0.063rem solid rgba(227, 227, 227, 1);
+    height: 5.0625rem;
+    margin: 0;
+    width: 11.25rem;
   `}
 `;
 
 export const IMG = styled.img`
+  border-radius: 0.4rem 0 0 0.4rem;
+  border-right: none;
+  border: 0.063rem solid rgba(227, 227, 227, 1);
+  box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
   height: 8.7rem;
   margin: 0;
-  box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
-  border: 0.063rem solid rgba(227, 227, 227, 1);
-  border-right: none;
-  border-radius: 0.4rem 0 0 0.4rem;
   padding: 0;
   position: relative;
 
   ${mq.dp` 
-    height: 17.0625rem;
-    width: 11.25rem;
-    padding: 0 0 0;
-    margin: 0;
-    border: 0.063rem solid rgba(227, 227, 227, 1);
-
-    box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
-    border-color: rgba(227, 227, 227, 1);
     border-bottom: none;
-
+    border-color: rgba(227, 227, 227, 1);
     border-radius: 0.45rem 0.45rem 0 0rem;
+    border: 0.063rem solid rgba(227, 227, 227, 1);
+    box-shadow: 0rem 0.12rem 0.5rem #d3d0d087;
+    height: 17.0625rem;
+    margin: 0;
+    padding: 0 0 0;
+    width: 11.25rem;
  `}
 `;
 
 export const Title = styled.h2`
-  padding: 1.2rem 0 0 0.8rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; // Line
+  display: -webkit-box;
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; // Line
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   overflow: hidden;
+  padding: 1.2rem 0 0 0.8rem;
+  text-overflow: ellipsis;
 `;
 
 export const Date = styled.h4`
   color: gray;
-  padding: 0.2rem 0 0 0.8rem;
-  margin: 0;
-  font-weight: 400;
   font-size: 0.82rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0.2rem 0 0 0.8rem;
 `;
 
 export const Overview = styled.h3`
-  color: black;
-  font-weight: 400;
-  font-size: 0.9rem;
-  margin: 1rem 0 0 0.8rem;
-  padding: 0.2rem 0.5rem 0 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  color: black;
+  display: -webkit-box;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 1rem 0 0 0.8rem;
   overflow: hidden;
+  padding: 0.2rem 0.5rem 0 0;
+  text-overflow: ellipsis;
+
   ${mq.dp` 
     display: none;
   `}

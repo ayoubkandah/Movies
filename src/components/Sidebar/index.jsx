@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useInterfaceContext } from 'context/Interface';
 import {
-  Wrapper,
-  UlLinks,
-  MainList,
+  UL,
   List,
   Links,
   Login,
-  UL,
+  Wrapper,
+  UlLinks,
+  MainList,
 } from './sidebar.style';
 
 /**

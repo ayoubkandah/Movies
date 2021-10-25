@@ -6,7 +6,7 @@ import { Img, ProviderButton } from './movie-provider.style';
 /**
  * Movie provider.
  *
- * @param {provider} props.provider Provider data.
+ * @param {provider} props.provider     Provider data.
  * @param {Function} props.handleChange Function that handle onChange.
  *
  * @return {JSX.Element}

@@ -12,7 +12,7 @@ import propTypes from 'prop-types';
  * @param {String}   props.defaultValue Default value of calendar.
  * @param {String}   props.name         Name of input.
  *
- * @returns
+ * @return {JSX.Element}
  */
 const Calendar = ({ handleChange, label }) => {
   const [date, setDate] = useState();

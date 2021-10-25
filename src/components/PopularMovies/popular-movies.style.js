@@ -15,11 +15,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   ${mq.dp`
   flex-direction: row;
-  max-width: 90rem;
-  margin: 0 auto;
   flex-direction: row;
+  margin: 0 auto;
+  max-width: 90rem;
   padding:0 0 0 1rem;
 `}
 `;
@@ -27,6 +28,7 @@ export const Wrapper = styled.div`
 export const MoviesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+
   ${mq.dp`
   margin:8.2rem 0rem 0 0;
   `}

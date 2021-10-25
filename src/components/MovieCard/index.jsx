@@ -36,20 +36,16 @@ const MovieCard = ({ movie }) => {
   }, []);
 
   return (
-    <>
-      <Wrapper>
-        <IMG
-          src={movie.poster_path ? image + movie.poster_path : corruptImage}
-        />
+    <Wrapper>
+      <IMG src={movie.poster_path ? image + movie.poster_path : corruptImage} />
 
-        <Container>
-          <CircleProgress percentage={movie.vote_average} />
-          <Title>{movie.title}</Title>
-          <Date>{date}</Date>
-          <Overview>{movie.overview}</Overview>
-        </Container>
-      </Wrapper>
-    </>
+      <Container>
+        <CircleProgress percentage={movie.vote_average} />
+        <Title>{movie.title}</Title>
+        <Date>{date}</Date>
+        <Overview>{movie.overview}</Overview>
+      </Container>
+    </Wrapper>
   );
 };
 

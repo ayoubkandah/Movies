@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from 'styles/colors';
 
 export const CheckboxInput = styled.input`
   height: 0.85rem;
@@ -8,28 +9,28 @@ export const CheckboxInput = styled.input`
 `;
 
 export const Wrapper = styled.div`
-  position: relative;
   display: inline-block;
   padding: 0;
+  position: relative;
+
   &&::after {
-    content: '✔';
-    position: absolute;
-    width: 0.78rem;
-    height: 0.78rem;
-    background-color: ${({ checked }) =>
-      checked ? 'rgba(1, 180, 228)' : '#fff'};
-    left: 0.153rem;
-    top: 0.125rem;
+    align-items: center;
+    background-color: ${({ checked }) => (checked ? colors.lightBlue : '#fff')};
     border-radius: 0.23rem;
     border: 0.11rem solid
-      ${({ checked }) => (checked ? 'rgba(1, 180, 228)' : '#6b6b6b')};
-    opacity: 1;
-    z-index: -1;
-    font-size: 0.7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      ${({ checked }) => (checked ? colors.lightBlue : colors.gray)};
     color: #fff;
+    content: '✔';
+    display: flex;
+    font-size: 0.7rem;
+    height: 0.78rem;
+    justify-content: center;
+    left: 0.153rem;
+    opacity: 1;
+    position: absolute;
+    top: 0.125rem;
+    width: 0.78rem;
+    z-index: -1;
   }
 `;
 

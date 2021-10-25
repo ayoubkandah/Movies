@@ -1,8 +1,8 @@
-import SortForm from 'components/SortFom';
 import React, { useEffect, useRef, useState } from 'react';
+import SortForm from 'components/SortFom';
 import MovieCard from 'components/MovieCard';
-import { discoverMovies, popularMovies } from 'services/movies';
 import { LoadMore } from 'styles/buttons.style';
+import { discoverMovies, popularMovies } from 'services/movies';
 import {
   Title,
   Wrapper,

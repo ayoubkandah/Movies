@@ -77,7 +77,6 @@ const SortForm = ({ handleSubmit }) => {
   };
 
   const handleOnchange = ({ target }) => {
-    console.log(target);
     setInputs({ ...inputs, [target.name]: target.value });
   };
 
@@ -154,7 +153,6 @@ const SortForm = ({ handleSubmit }) => {
 
         data.push(obj);
       });
-      console.log(data, 'lang');
 
       setLanguagesData(data);
     }
@@ -171,7 +169,6 @@ const SortForm = ({ handleSubmit }) => {
     }
   }, [inputs]);
 
-  console.log(inputs);
   return (
     <Form
       onSubmit={(event) => {

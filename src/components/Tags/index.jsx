@@ -6,8 +6,8 @@ import Tag from './tags.style';
 /**
  * Tag button.
  *
- * @param {Object} props.data Tags name and value.
- * @param {Function} props.handleChange handle onChange.
+ * @param {Object} props.data           Tags name and value.
+ * @param {Function} props.handleChange Handle onChange.
  *
  *
  * @return {JSX.Element}

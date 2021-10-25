@@ -1,33 +1,34 @@
+import { colors } from '@mui/material';
 import styled from 'styled-components';
 
 export const RadioInput = styled.input`
-  width: 1rem;
-  height: 1rem;
-  position: relative;
-  z-index: 1;
-  opacity: 0;
   cursor: pointer;
+  height: 1rem;
+  opacity: 0;
+  position: relative;
+  width: 1rem;
+  z-index: 1;
 `;
 
 export const RadioSpan = styled.span`
-  position: absolute;
-  padding: 0;
-  margin: 0;
-
   border-radius: 40rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
   &&::before {
-    position: absolute;
-    content: '';
-    text-align: center;
     background: ${({ checked }) => (checked ? 'white' : ' #e4e7eb')};
-    width: ${({ checked }) => (checked ? '0.37rem' : ' 0.8rem')};
+    border-radius: 30rem;
+    border: ${({ checked }) => (checked ? '0.32rem' : ' 0.1rem ')} solid
+      ${({ checked }) => (checked ? colors.lightBlue : ' #ced3db ')};
+    content: '';
     height: ${({ checked }) => (checked ? '0.37rem' : ' 0.8rem')};
-    top: ${({ checked }) => (checked ? '0.2rem' : ' 0.2rem')};
     left: ${({ checked }) => (checked ? '0.31rem' : ' 0.29rem')};
     padding: 0;
-    border: ${({ checked }) => (checked ? '0.32rem' : ' 0.1rem ')} solid
-      ${({ checked }) => (checked ? 'rgba(1,180,228)' : ' #ced3db ')};
-    border-radius: 30rem;
+    position: absolute;
+    text-align: center;
+    top: ${({ checked }) => (checked ? '0.2rem' : ' 0.2rem')};
+    width: ${({ checked }) => (checked ? '0.37rem' : ' 0.8rem')};
     z-index: 3;
   }
 `;
