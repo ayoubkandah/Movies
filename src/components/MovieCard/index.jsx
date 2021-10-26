@@ -20,7 +20,7 @@ import {
  */
 const MovieCard = ({ movie }) => {
   const [date, setDate] = useState();
-  console.log(movie);
+
   useEffect(() => {
     if (movie.release_date) {
       const time = movie.release_date;
