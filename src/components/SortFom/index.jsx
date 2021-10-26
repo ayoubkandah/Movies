@@ -81,6 +81,7 @@ const SortForm = ({ handleSubmit }) => {
   };
 
   const handleCalendar = (date, type) => {
+    console.log(date);
     const time = new window.Date(date);
     const value = time.getTime();
 

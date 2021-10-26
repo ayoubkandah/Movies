@@ -20,16 +20,14 @@ import {
  */
 const MovieCard = ({ movie }) => {
   const [date, setDate] = useState();
-
+  console.log(movie);
   useEffect(() => {
     if (movie.release_date) {
       const time = movie.release_date;
-      const newDate = new window.Date(0, time.slice(5, 7), 0);
-      const month = newDate.toLocaleString('en-us', { month: 'long' });
-      const formattedDate = `${month} ${time.slice(8, 10)}, ${time.slice(
-        0,
-        4
-      )}`;
+      const newDate = new window.Date(time);
+      const formattedDate = newDate.toLocaleString('en-us', {
+        dateStyle: 'medium',
+      });
 
       setDate(formattedDate);
     }
