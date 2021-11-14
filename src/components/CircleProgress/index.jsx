@@ -38,7 +38,7 @@ const CircleProgress = ({ percentage }) => {
       left: leftPxToRem,
       right: rightPxToRem,
     });
-  }, []);
+  }, [percentage]);
 
   return (
     <Rate
